@@ -34,4 +34,8 @@ void loop(){
 	}
 	delay(REFRESH_TIME);
 	count += 1;
+	
+	if (count == 10){
+		count = 0;
+	}
 }

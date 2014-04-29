@@ -1,6 +1,6 @@
 int count = 0;
 int test = 0;
-int ledPin[] = {4, 5, 6};
+int ledPin[] = {4, 5, 6, 7};
 const int REFRESH_TIME = 1000;
 
 void setup(){

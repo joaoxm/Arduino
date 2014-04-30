@@ -4,7 +4,7 @@ int ledPin[] = {4, 5, 6, 7};
 const int REFRESH_TIME = 1000;
 
 void setup(){
-	for (i=4; i<=6; i++){pinMode(ledPin[i], OUTPUT)}
+	for (i=4; i<=7; i++){pinMode(ledPin[i], OUTPUT)}
 }
 
 void loop(){

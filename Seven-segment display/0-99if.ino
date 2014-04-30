@@ -43,7 +43,7 @@ void loop(){
 		a = int(test); //2
 		b += 1;
 		
-		if (a != help){ //1 != 2
+		if (a != help){ //2 != 1
 			test = 10 - b;
 		}	
 	}

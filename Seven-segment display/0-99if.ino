@@ -1,10 +1,10 @@
 float count, test, help = 0;
-int a, help, b = 0;
+int a, b, help = 0;
 int ledPin[] = {4, 5, 6, 7, 8, 9, 10, 11}; //4,5,6,7 display esquerda, 8,9,10,11 display direita
-const int REFRESH_TIME = 1000;
+const int REFRESH_TIME = 100;
 
 void setup(){
-	for (i=4; i<=9; i++){pinMode(ledPin[i], OUTPUT)}
+	for (i=4; i<=11; i++){pinMode(ledPin[i], OUTPUT)}
 }
 
 void loop(){

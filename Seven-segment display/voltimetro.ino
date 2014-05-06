@@ -16,7 +16,7 @@ void loop(){
 	Serial.print("Voltagem: "); //MOSTRA VOLTAGEM NA TELA
 	Serial.println(count);
 	
-	convertBinary(4, 5, 6, 7); //COLOCA NA FUNÇÃO E CONVERTE PARA BINÁRIO
+	convertBinary(test, 4, 5, 6, 7); //COLOCA NA FUNÇÃO E CONVERTE PARA BINÁRIO
 	
 	test = count;  //1.3
 	help = int(test); //recebeu 1
@@ -32,7 +32,7 @@ void loop(){
 		}	
 	}
 	
-	convertBinary(8, 9, 10, 11);
+	convertBinary(test, 8, 9, 10, 11);
 	
 	if (count < 0,5){ 
     digitalWrite(ledPin[0], LOW);
@@ -56,7 +56,7 @@ void loop(){
 	}
 }
 
-void convertBinary(int a, int b, int c, int d){
+void convertBinary(float test, int a, int b, int c, int d){
 	if (test-8>=0){
 		digitalWrite(ledPin[a], HIGH);
 		test -= 8;

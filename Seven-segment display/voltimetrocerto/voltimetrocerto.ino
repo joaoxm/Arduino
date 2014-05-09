@@ -1,9 +1,10 @@
 int displaySide[] = {2,3,4,5,6,7,8,9};
 int ledPin[] = {10,11,12};
 int test;
-int counts[] = {0,0};
+int sensorValue;
+int sensorPin = A0;
 char count[5];
-const int REFRESH_TIME = 100;
+const int REFRESH_TIME = 2000;
 float floo;
 
 void setup(){
@@ -22,14 +23,19 @@ void setup(){
 }
 
 void loop(){
-   char *valor = dtostrf(floo,4,2,count);
-
+  sensorValue = analogRead(sensorPin); //LE O VALOR 0-1023 DA PILHA
+  
+  floo = (5*sensorValue);  //CONVERTE PARA VOLTS
+  floo = floo/1023;
+  
+  dtostrf(floo,4,2,count); //CONVERTE DE FLOAT PARA CHAR
+  
   Serial.print("Count = "); //MOSTRA VOLTAGEM NA TELA
   Serial.print(count[0]);
   Serial.print(count[1]);
   Serial.println(count[2]);
   
-  test = count[0] - '0';
+  test = count[0] - '0'; //CHAR PARA INTEIRO
   convertBinary(test, 2, 3, 4, 5); //2=>8, 3=>4, 4=>2, 5=>1
 
   test = count[2] - '0';
@@ -38,8 +44,8 @@ void loop(){
   ledShow(floo, 2.5, 7.0); //2.5- vermelho, 2.5-7.0 amarelo, 7.0+ verde
 
   delay(REFRESH_TIME);
-  floo += 0.1;
-  if (floo >= 10){ floo = 0;}
+  /*floo += 0.1;
+  if (floo >= 10){ floo = 0;}*/
 }
 
 void convertBinary(int test, int bit1, int bit2, int bit3, int bit4){

@@ -24,13 +24,22 @@ void setup(){
 
 void loop(){
   sensorValue = analogRead(sensorPin); //LE O VALOR 0-1023 DA PILHA
-  
   floo = (5*sensorValue);  //CONVERTE PARA VOLTS
   floo = floo/1023;
+  Serial.println(floo);
   
-  dtostrf(floo,4,2,count); //CONVERTE DE FLOAT PARA CHAR
+  dtostrf(floo,1,3,count); //CONVERTE DE FLOAT PARA CHAR
   
-  Serial.print("Count = "); //MOSTRA VOLTAGEM NA TELA
+  if ((count[3] - '0')>=5 && (count[2] - '0')<9){
+    Serial.println(count[3]);
+    count[2] = count[2] + 1;
+  } else if ((count[3] - '0')>=5 && (count[2] - '0')==9){
+    Serial.println(count[3]);
+    count[0] = count[0] + 1;
+    count[2] = count[2] - 9; 
+  }
+  
+  Serial.print("Voltagem = "); //MOSTRA VOLTAGEM NA TELA
   Serial.print(count[0]);
   Serial.print(count[1]);
   Serial.println(count[2]);
@@ -41,11 +50,11 @@ void loop(){
   test = count[2] - '0';
   convertBinary(test, 8, 7, 6, 9); //8=>8, 7=>4, 6=>2, 9=>1
 
-  ledShow(floo, 2.5, 7.0); //2.5- vermelho, 2.5-7.0 amarelo, 7.0+ verde
+  ledShow(floo, 1, 1.3); //1- vermelho, 1-1.3 amarelo, 1.3+ verde
 
   delay(REFRESH_TIME);
-  /*floo += 0.1;
-  if (floo >= 10){ floo = 0;}*/
+  /*floo += 0.01;
+  if (floo >= 10){ floo = 0;}*/ //TESTS
 }
 
 void convertBinary(int test, int bit1, int bit2, int bit3, int bit4){
